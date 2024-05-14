@@ -28,7 +28,7 @@ struct ContentView: View {
                         switch route {
                         case .view1:
                             View1(viewModel: viewModel.view1ViewModel)
-                            
+                      
                         case .view2:
                             View2(viewModel: viewModel.view2ViewModel)
 
@@ -75,7 +75,6 @@ class ContentViewModel: ObservableObject {
     
     func didTapNavigateView1View() {
         router.push(to: .view1)
-
     }
 }
 

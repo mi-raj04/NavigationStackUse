@@ -17,7 +17,7 @@ struct View3: View {
                 viewModel.didTapNavigateView4()
             }
             Button("pop screen 1") {
-                viewModel.didTapNavigateView1()
+                viewModel.didTapNavigateView1(view: Route.view1)
             }
         }
     }
@@ -36,7 +36,7 @@ class View3Model: ObservableObject {
         router.push(to: .view4)
     }
     
-    func didTapNavigateView1() {
-        router.popUntilIndex(1)
+    func didTapNavigateView1(view:Route) {
+        router.popUntilView(view)
     }
 }

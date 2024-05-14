@@ -24,16 +24,14 @@ class Router: ObservableObject {
             stack.append(view)
         }
     
-    func popUntilIndex(_ index: Int) {
-        
-            guard index >= 0 && index < stack.count else {
-                fatalError("Index out of bounds")
-            }
-            
-            while stack.count > index {
-                stack.removeLast()
-            }
+    func popUntilView(_ view: Route) {
+        guard let index = stack.firstIndex(of: view) else {
+            stack.removeAll()
+            return
         }
+        
+        stack.removeSubrange((index + 1)...)
+    }
 
         func pop() {
             stack.removeLast()

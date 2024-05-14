@@ -30,3 +30,7 @@ class View2Model: ObservableObject {
         router.push(to: .view3)
     }
 }
+
+
+
+
