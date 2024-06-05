@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct EasyNavigationDemoApp: App {
+    @StateObject var viewModel: ContentViewModel = ContentViewModel(router: Router())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentViewModel(router: Router()))
+            ContentView().environment(viewModel)
         }
     }
 }

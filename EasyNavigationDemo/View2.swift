@@ -20,7 +20,7 @@ struct View2: View {
 
 class View2Model: ObservableObject {
     
-    private let router: Router
+    private var router: Router
     
     init(router: Router) {
         self.router = router

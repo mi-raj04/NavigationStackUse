@@ -8,9 +8,10 @@
 import SwiftUI
 import Combine
 
+
 struct ContentView: View {
     
-    @ObservedObject var viewModel: ContentViewModel
+    @EnvironmentObject var viewModel: ContentViewModel
 
     var body: some View {
         NavigationStack(
@@ -43,18 +44,19 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView(viewModel: ContentViewModel(router:Router()))
-}
+//#Preview {
+////    ContentView(viewModel: ContentViewModel(router:Router()))
+//}
 
+@Observable
 class ContentViewModel: ObservableObject {
     
-    @Published var router: Router
-    private var cancellables = Set<AnyCancellable>()
+    var router: Router
+//    private var cancellables = Set<AnyCancellable>()
 
     init(router: Router) {
         self.router = router
-        configureSubscriptions()
+//        configureSubscriptions()
     }
     
     var view1ViewModel: View1Model {
@@ -77,17 +79,17 @@ class ContentViewModel: ObservableObject {
         router.push(to: .view1)
     }
 }
-
-private extension ContentViewModel {
-    
-    func configureSubscriptions() {
-        router.$stack
-            .sink { [weak self] _ in
-                self?.objectWillChange.send()
-            }
-            .store(in: &cancellables)
-    }
-}
+//
+//private extension ContentViewModel {
+//    
+//    func configureSubscriptions() {
+//        router.$stack
+//            .sink { [weak self] _ in
+//                self?.objectWillChange.send()
+//            }
+//            .store(in: &cancellables)
+//    }
+//}
 
 
 

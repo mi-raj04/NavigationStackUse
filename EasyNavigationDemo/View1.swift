@@ -24,7 +24,7 @@ struct View1: View {
 
 class View1Model: ObservableObject {
     
-    private let router: Router
+    private var router: Router
     
     init(router: Router) {
         self.router = router

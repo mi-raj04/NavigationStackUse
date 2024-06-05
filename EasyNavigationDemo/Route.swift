@@ -16,15 +16,15 @@ enum Route {
 
 extension Route: Hashable {}
 
-class Router: ObservableObject {
+struct Router {
     
-    @Published var stack = [Route]()
+     var stack = [Route]()
     
-    func push(to view: Route) {
+    mutating func push(to view: Route) {
             stack.append(view)
         }
     
-    func popUntilView(_ view: Route) {
+    mutating func popUntilView(_ view: Route) {
         guard let index = stack.firstIndex(of: view) else {
             stack.removeAll()
             return
@@ -33,11 +33,11 @@ class Router: ObservableObject {
         stack.removeSubrange((index + 1)...)
     }
 
-        func pop() {
+    mutating func pop() {
             stack.removeLast()
         }
         
-        func popToRootView() {
+    mutating func popToRootView() {
             stack.removeAll()
         }
 }
